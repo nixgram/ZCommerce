@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Api", "ZCommerce.Api\ZCommerce.Api.csproj", "{DDFA88DE-0B56-460A-84DD-B9796E9FA191}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Api", "src\ZCommerce.Api\ZCommerce.Api.csproj", "{DDFA88DE-0B56-460A-84DD-B9796E9FA191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Domain", "ZCommerce.Domain\ZCommerce.Domain.csproj", "{460BBAF6-F27B-4DF8-8B29-34A82E28B5FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Domain", "src\ZCommerce.Domain\ZCommerce.Domain.csproj", "{460BBAF6-F27B-4DF8-8B29-34A82E28B5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Application", "ZCommerce.Application\ZCommerce.Application.csproj", "{9C62476E-4DEC-44C8-83F0-71E964DC0BBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Application", "src\ZCommerce.Application\ZCommerce.Application.csproj", "{9C62476E-4DEC-44C8-83F0-71E964DC0BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Infrastructure", "ZCommerce.Infrastructure\ZCommerce.Infrastructure.csproj", "{B6DB2B63-85E7-4DDB-93D8-D9F30E573044}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Infrastructure", "src\ZCommerce.Infrastructure\ZCommerce.Infrastructure.csproj", "{B6DB2B63-85E7-4DDB-93D8-D9F30E573044}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{597AB28C-9C00-42FC-9A73-8D4617BEE469}"
 EndProject
