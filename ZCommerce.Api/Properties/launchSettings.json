@@ -15,10 +15,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "InvoiceManagementApp.Api": {
+    "ZCommerce.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:9001;http://localhost:9000",
+      "applicationUrl": "http://localhost:9000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
