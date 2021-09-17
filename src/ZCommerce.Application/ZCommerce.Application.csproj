@@ -10,11 +10,17 @@
       <PackageReference Include="FluentValidation" Version="8.5.0" />
       <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="8.5.0" />
       <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ZCommerce.Domain\ZCommerce.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Auths\ViewModels" />
     </ItemGroup>
 
 </Project>

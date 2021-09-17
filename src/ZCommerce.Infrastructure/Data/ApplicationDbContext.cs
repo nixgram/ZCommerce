@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 using ZCommerce.Application.Common.Interfaces;
 using ZCommerce.Domain.Common;
 using ZCommerce.Domain.Entities;
-using ZCommerce.Infrastructure.Models;
 
 namespace ZCommerce.Infrastructure.Data
 {

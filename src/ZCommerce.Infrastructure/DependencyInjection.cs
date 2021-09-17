@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZCommerce.Application.Common.Interfaces;
+using ZCommerce.Domain.Common;
 using ZCommerce.Infrastructure.Data;
-using ZCommerce.Infrastructure.Models;
 
 namespace ZCommerce.Infrastructure
 {
