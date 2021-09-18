@@ -48,7 +48,7 @@ jobs:
       # mode & send stacktraces back on "500 Internal Server Error" responses
       # (don't do this in production though!)
       - name: Start your API
-        run: cd ..\src\ZCommerce.Api && dotnet run # <- ✏️ update this
+        run: dotnet run # <- ✏️ update this
 
       - name: Mayhem for API
         uses: ForAllSecure/mapi-action@193b709971cc377675e33284aecbf9229853e010
