@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ZCommerce.Api.Controllers.Common
 {
-    [ApiController, Route("api/[controller]")]
+    [ApiController, Route("api/v1/[controller]")]
     public class ApiBaseController : ControllerBase
     {
         // ReSharper disable once UnassignedField.Global

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ZCommerce.Api.Controllers.Common;
 using ZCommerce.Application.Common.Interfaces;
@@ -11,26 +12,23 @@ using ZCommerce.Application.Invoices.ViewModels;
 namespace ZCommerce.Api.Controllers
 {
     [Authorize]
-    public class InvoiceBaseController : ApiBaseController
+    public class InvoiceController : ApiBaseController
     {
         private readonly ICurrentUserService _currentUserService;
-
-        public InvoiceBaseController(ICurrentUserService currentUserService)
+        public InvoiceController(ICurrentUserService currentUserService)
         {
             _currentUserService = currentUserService;
         }
 
-        [HttpPost]
+        [HttpPost, ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<int>> Create(CreateInvoiceCommand command)
         {
             return await Mediator.Send(command);
         }
 
-
-        [HttpGet]
+        [HttpGet, ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IList<InvoiceVm>> Get()
         {
-            var userId = _currentUserService.UserId;
             return await Mediator.Send(new GetUserInvoicesQuery {UserId = _currentUserService.UserId});
         }
     }

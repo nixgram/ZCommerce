@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using ZCommerce.Application.Common.Interfaces;
 
-namespace ZCommerce.Api.Services
+namespace ZCommerce.Api.Common
 {
     public class CurrentUserService : ICurrentUserService
     {

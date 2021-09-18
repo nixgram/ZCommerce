@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.Generation.Processors.Security;
-using ZCommerce.Api.Services;
+using ZCommerce.Api.Common;
 using ZCommerce.Application;
 using ZCommerce.Application.Common.Interfaces;
 using ZCommerce.Infrastructure;

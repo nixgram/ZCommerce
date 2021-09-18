@@ -14,12 +14,10 @@ namespace ZCommerce.Api.Controllers
             return await Mediator.Send(userRegisterCommand);
         }
 
-
         [HttpPost("login")]
-        public async Task<IActionResult> Login()
+        public async Task<AuthResult> Login(UserLoginCommand userLoginCommand)
         {
-            // TODO : Will be implemented soon
-            return await Task.Run(() => Ok("Login"));
+            return await Mediator.Send(userLoginCommand);
         }
     }
 }
