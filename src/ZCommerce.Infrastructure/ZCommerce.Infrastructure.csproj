@@ -21,8 +21,4 @@
       <ProjectReference Include="..\ZCommerce.Domain\ZCommerce.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models" />
-    </ItemGroup>
-
 </Project>

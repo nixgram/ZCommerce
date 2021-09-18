@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using ZCommerce.Application.Common.Interfaces;
 
 namespace ZCommerce.Api.Middlewares
 {
@@ -24,10 +27,10 @@ namespace ZCommerce.Api.Middlewares
             finally
             {
                 _logger.LogInformation(
-                    "Request {method} {url} => {statusCode}",
+                    "Request {method} {url} => {statusCode} by : {UserId} at {time}",
                     context.Request?.Method,
                     context.Request?.Path.Value,
-                    context.Response?.StatusCode);
+                    context.Response?.StatusCode, context.User.FindFirst(ClaimTypes.Email)?.Value, DateTime.Now.ToString("F"));
             }
         }
     }
