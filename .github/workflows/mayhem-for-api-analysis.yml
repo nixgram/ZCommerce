@@ -23,18 +23,18 @@
 #
 # If you have any questions, please contact us at mayhem4api@forallsecure.com
 
-name: "Mayhem for API"
+name: "ZCommerce"
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   mayhem-for-api:
-    name: Mayhem for API
+    name: ZCommerce API
     # Mayhem for API runs on linux, mac and windows
     runs-on: ubuntu-latest
     permissions:
@@ -48,15 +48,15 @@ jobs:
       # mode & send stacktraces back on "500 Internal Server Error" responses
       # (don't do this in production though!)
       - name: Start your API
-        run: ./run_your_api.sh & # <- ✏️ update this
+        run: cd ..\src\ZCommerce.Api && dotnet run # <- ✏️ update this
 
       - name: Mayhem for API
         uses: ForAllSecure/mapi-action@193b709971cc377675e33284aecbf9229853e010
         continue-on-error: true
         with:
           mapi-token: ${{ secrets.MAPI_TOKEN }}
-          api-url: http://localhost:8080 # <- ✏️ update this
-          api-spec: http://localhost:8080/openapi.json # <- ✏️ update this
+          api-url: http://localhost:9000 # <- ✏️ update this
+          api-spec: http://localhost:9000/swagger/v1/swagger.json # <- ✏️ update this
           duration: 60
           sarif-report: mapi.sarif
 
