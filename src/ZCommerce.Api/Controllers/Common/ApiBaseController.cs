@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using ZCommerce.Api.Attributes;
 
 namespace ZCommerce.Api.Controllers.Common
 {
-    [ApiController, Route("api/v1/[controller]")]
+    [ValidationActionFilter, ApiController, Route("api/v1/[controller]")]
     public class ApiBaseController : ControllerBase
     {
         // ReSharper disable once UnassignedField.Global
