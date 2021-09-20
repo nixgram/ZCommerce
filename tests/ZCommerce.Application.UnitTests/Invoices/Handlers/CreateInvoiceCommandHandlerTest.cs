@@ -17,13 +17,7 @@ namespace ZCommerce.Application.Tests.Invoices.Handlers
     {
         private readonly Mock<IApplicationContext> _context = new();
         private readonly Mock<IMapper> _mapper = new();
-        private readonly IMediator _mediator;
-
-        public CreateInvoiceCommandHandlerTest(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
+    
         [Fact]
         public async Task CreateInvoice_WithValidObject_ReturnInvoiceId()
         {
