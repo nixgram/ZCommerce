@@ -8,6 +8,7 @@ using ZCommerce.Domain.Entities;
 
 namespace ZCommerce.Application.Invoices.Handlers
 {
+    
     public class CreateInvoiceCommandHandler : IRequestHandler<CreateInvoiceCommand, int>
     {
         private readonly IApplicationContext _context;

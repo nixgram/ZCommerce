@@ -17,28 +17,40 @@ namespace ZCommerce.Application.Tests.Invoices.Handlers
     {
         private readonly Mock<IApplicationContext> _context = new();
         private readonly Mock<IMapper> _mapper = new();
+        private readonly IMediator _mediator;
 
-
-        [Fact]
-        public void Sum()
+        public CreateInvoiceCommandHandlerTest(IMediator mediator)
         {
-            Assert.True(true);
+            _mediator = mediator;
         }
 
         [Fact]
-        public async Task Fact()
+        public async Task CreateInvoice_WithValidObject_ReturnInvoiceId()
         {
             _mapper.Setup(opt => opt.Map<Invoice>(It.IsAny<CreateInvoiceCommand>())).Returns((Invoice) default);
             _context.Setup(opt => opt.Invoices.AddAsync(It.IsAny<Invoice>(), default));
             _context.Setup(opt => opt.SaveChangesAsync(default)).ReturnsAsync(1);
             var mediatR = new Mock<IMediator>();
             mediatR.Setup(opt => opt.Send(It.IsAny<CreateInvoiceCommand>(), default)).ReturnsAsync(1);
-            var result = await mediatR.Object.Send(GetInvoiceCommand(), default);
+            var result = await mediatR.Object.Send(GetValidInvoiceCommand());
             Assert.IsType<int>(result);
- 
         }
 
-        private static CreateInvoiceCommand GetInvoiceCommand()
+        [Fact]
+        public async Task CreateInvoice_WithInValidObject_ThrowException()
+        {
+            _mapper.Setup(opt => opt.Map<Invoice>(It.IsAny<CreateInvoiceCommand>())).Returns((Invoice) default);
+            _context.Setup(opt => opt.Invoices.AddAsync(It.IsAny<Invoice>(), default));
+            _context.Setup(opt => opt.SaveChangesAsync(default)).ReturnsAsync(-1);
+            var mediatR = new Mock<IMediator>();
+            mediatR.Setup(opt => opt.Send(It.IsAny<CreateInvoiceCommand>(), default))
+                .ThrowsAsync(new Exception("Invalid Exception"));
+
+            await Assert.ThrowsAsync<Exception>(() => mediatR.Object.Send(GetInvalidInvoiceCommand()));
+        }
+        
+
+        private static CreateInvoiceCommand GetValidInvoiceCommand()
         {
             return new CreateInvoiceCommand
             {
@@ -53,7 +65,29 @@ namespace ZCommerce.Application.Tests.Invoices.Handlers
                 DueDate = null,
                 InvoiceItems = new List<InvoiceItemVm>()
                 {
-                    new InvoiceItemVm() {Id = 0, Item = "Napa", Quantity = 4, Rate = 5}
+                    new() {Id = 0, Item = "Napa", Quantity = 4, Rate = 5}
+                },
+                InvoiceNumber = "12345678",
+                PaymentTerms = "None",
+                TaxType = TaxType.Flat
+            };
+        }
+
+        private static CreateInvoiceCommand GetInvalidInvoiceCommand()
+        {
+            return new CreateInvoiceCommand
+            {
+                Discount = -10,
+                From = "Dhaka",
+                To = "D",
+                Logo = "logo.png",
+                Tax = -10,
+                AmountPaid = -100,
+                DiscountType = DiscountType.Flat,
+                DueDate = null,
+                InvoiceItems = new List<InvoiceItemVm>()
+                {
+                    new() {Id = 0, Item = "Napa", Quantity = 4, Rate = 5}
                 },
                 InvoiceNumber = "12345678",
                 PaymentTerms = "None",
