@@ -9,7 +9,7 @@ namespace ZCommerce.Api.Installers
     {
         public void InstallServices(IConfiguration configuration, IServiceCollection services)
         {
-            services.AddApplication();
+            services.AddApplication(configuration);
         }
     }
 }

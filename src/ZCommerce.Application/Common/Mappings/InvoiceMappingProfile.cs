@@ -16,4 +16,4 @@ namespace ZCommerce.Application.Common.Mappings
             CreateMap<CreateInvoiceCommand, Invoice>();
         }
     }
-}
+} 

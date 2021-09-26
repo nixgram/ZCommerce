@@ -15,6 +15,8 @@ namespace ZCommerce.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     configuration.GetConnectionString("DefaultConnection")));
+
+          
             services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationDbContext>());
             services.AddDatabaseDeveloperPageExceptionFilter();
 

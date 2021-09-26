@@ -11,6 +11,7 @@ namespace ZCommerce.Api.Installers
     {
         public void InstallServices(IConfiguration configuration, IServiceCollection services)
         {
+           
             services.AddOpenApiDocument((config) =>
             {
                 config.Title = "ZCommerce OpenSource E2E-Ecommerce API Provider";
