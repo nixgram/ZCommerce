@@ -1,14 +1,8 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using ZCommerce.Application.Auths.Commands;
 using ZCommerce.Application.Auths.Config;
 using ZCommerce.Domain.Common;
@@ -18,13 +12,10 @@ namespace ZCommerce.Application.Auths.Handlers
     public class UserRegisterCommandHandlers : IRequestHandler<UserRegisterCommand, AuthResult>
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly JwtConfig _config;
 
-        public UserRegisterCommandHandlers(UserManager<ApplicationUser> userManager,
-            IOptionsMonitor<JwtConfig> optionsMonitor)
+        public UserRegisterCommandHandlers(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
-            _config = optionsMonitor.CurrentValue;
         }
 
         public async Task<AuthResult> Handle(UserRegisterCommand request, CancellationToken cancellationToken)

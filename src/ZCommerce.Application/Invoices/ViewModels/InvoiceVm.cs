@@ -24,7 +24,7 @@ namespace ZCommerce.Application.Invoices.ViewModels
         public decimal AmountPaid { get; set; }
         public DiscountType DiscountType { get; set; }
         public TaxType TaxType { get; set; }
-        public IList<InvoiceItemVm> InvoiceItems { get; set; }
+        public IList<InvoiceItemVm> InvoiceItems { get;  set; }
         public DateTime Created { get; set; }
     }
 }
