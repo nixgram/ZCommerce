@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZCommerce.Application.Common.Interfaces;
@@ -16,11 +17,12 @@ namespace ZCommerce.Infrastructure
                 options.UseSqlite(
                     configuration.GetConnectionString("DefaultConnection")));
 
-          
+
             services.AddScoped<IApplicationContext>(provider => provider.GetService<ApplicationDbContext>());
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddIdentityServer()
