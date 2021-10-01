@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ZCommerce.Application.Common.Interfaces;
 using ZCommerce.Domain.Common;
 using ZCommerce.Infrastructure.Data;
+using ZCommerce.Infrastructure.Identity;
 
 namespace ZCommerce.Infrastructure
 {
@@ -27,6 +28,7 @@ namespace ZCommerce.Infrastructure
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
+            services.AddTransient<IIdentityService, IdentityService>();
             return services;
         }
     }
