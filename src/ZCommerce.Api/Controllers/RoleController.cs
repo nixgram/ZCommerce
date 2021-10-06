@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using ZCommerce.Api.Controllers.Common;
 using ZCommerce.Application.Role.Commands;
 using ZCommerce.Application.Role.Queries;
-using ZCommerce.Domain.Common;
 
 namespace ZCommerce.Api.Controllers
 {
