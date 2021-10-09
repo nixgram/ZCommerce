@@ -37,17 +37,17 @@ namespace ZCommerce.Infrastructure.Data
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedBy = _currentUserService.UserId;
-                        entry.Entity.Created = DateTime.UtcNow;
+                        entry.Entity.Created = DateTime.Now;
                         entry.Entity.IsDisabled = false;
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastModifiedBy = _currentUserService.UserId;
-                        entry.Entity.LastModified = DateTime.UtcNow;
+                        entry.Entity.LastModified = DateTime.Now;
                         entry.Entity.IsDisabled = false;
                         break;
                     case EntityState.Deleted:
                         entry.Entity.DisabledBy = _currentUserService.UserId;
-                        entry.Entity.DisabledOn = DateTime.UtcNow;
+                        entry.Entity.DisabledOn = DateTime.Now;
                         entry.Entity.IsDisabled = true;
                         break;
                 }
