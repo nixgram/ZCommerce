@@ -2,7 +2,7 @@
 #Use your choice of image as base. Mine is alpine! 
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
-
+COPY ZCommerce.Api/appsettings.json ./
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY . .
