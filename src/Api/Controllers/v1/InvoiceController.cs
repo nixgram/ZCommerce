@@ -9,12 +9,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace Api.Controllers.v1
 {
     [Authorize]
     public class InvoiceController : ApiBaseController
     {
         private readonly ICurrentUserService _currentUserService;
+
         public InvoiceController(ICurrentUserService currentUserService)
         {
             _currentUserService = currentUserService;

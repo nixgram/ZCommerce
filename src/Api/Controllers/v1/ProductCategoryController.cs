@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Api.Controllers.Common;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Application.Common.Interfaces;
 using Application.ProductCategory.Commands;
 using Application.ProductCategory.Queries;
 using Application.ProductCategory.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace Api.Controllers.v1
 {
     [Authorize]
     public class ProductCategoryController : ApiBaseController

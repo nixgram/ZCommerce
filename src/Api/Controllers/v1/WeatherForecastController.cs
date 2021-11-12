@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Api.Controllers
+namespace Api.Controllers.v1
 {
     [AllowAnonymous]
     public class WeatherForecastController : ApiBaseController
