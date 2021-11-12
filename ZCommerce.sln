@@ -1,20 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Api", "src\ZCommerce.Api\ZCommerce.Api.csproj", "{DDFA88DE-0B56-460A-84DD-B9796E9FA191}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\Api\Api.csproj", "{DDFA88DE-0B56-460A-84DD-B9796E9FA191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Domain", "src\ZCommerce.Domain\ZCommerce.Domain.csproj", "{460BBAF6-F27B-4DF8-8B29-34A82E28B5FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{460BBAF6-F27B-4DF8-8B29-34A82E28B5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Application", "src\ZCommerce.Application\ZCommerce.Application.csproj", "{9C62476E-4DEC-44C8-83F0-71E964DC0BBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{9C62476E-4DEC-44C8-83F0-71E964DC0BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Infrastructure", "src\ZCommerce.Infrastructure\ZCommerce.Infrastructure.csproj", "{B6DB2B63-85E7-4DDB-93D8-D9F30E573044}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{B6DB2B63-85E7-4DDB-93D8-D9F30E573044}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{597AB28C-9C00-42FC-9A73-8D4617BEE469}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DEE77649-16A0-4CA2-836C-163C67532CE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Application.UnitTests", "tests\ZCommerce.Application.UnitTests\ZCommerce.Application.UnitTests.csproj", "{D99C8316-4143-4778-BAD6-F0F7CAB72C18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.UnitTests", "tests\Application.UnitTests\Application.UnitTests.csproj", "{D99C8316-4143-4778-BAD6-F0F7CAB72C18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCommerce.Application.IntegrationTests", "tests\ZCommerce.Application.IntegrationTests\ZCommerce.Application.IntegrationTests.csproj", "{0B260E7E-556E-4118-B822-A2BF9440C799}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.IntegrationTests", "tests\Application.IntegrationTests\Application.IntegrationTests.csproj", "{0B260E7E-556E-4118-B822-A2BF9440C799}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
