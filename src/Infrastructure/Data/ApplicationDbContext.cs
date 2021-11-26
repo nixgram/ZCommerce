@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Common.Interfaces;
+using Domain.Common;
+using Domain.Entities;
+using Domain.Entities.Product;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Application.Common.Interfaces;
-using Domain.Common;
-using Domain.Entities;
 
 namespace Infrastructure.Data
 {
@@ -55,5 +56,8 @@ namespace Infrastructure.Data
 
             return base.SaveChangesAsync(cancellationToken);
         }
+
+        public DbSet<AdditionalInformation> AdditionalInformations { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

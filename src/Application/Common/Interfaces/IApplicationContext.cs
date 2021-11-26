@@ -1,7 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Domain.Entities;
+using Domain.Entities.Product;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Common.Interfaces
 {
@@ -11,5 +12,7 @@ namespace Application.Common.Interfaces
         DbSet<InvoiceItem> InvoiceItems { get; set; }
         DbSet<Domain.Entities.ProductCategory> ProductCategories { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        DbSet<AdditionalInformation> AdditionalInformations { get; set; }
+        DbSet<Product> Products { get; set; }
     }
 }
