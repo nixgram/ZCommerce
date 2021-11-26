@@ -52,7 +52,7 @@ namespace Api.Middlewares
             }
 
 
-            var result = JsonConvert.SerializeObject(new {isSuccess = false});
+            var result = JsonConvert.SerializeObject(new {isSuccess = false, reasonOfFailure = exception.Message});
             context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
             return context.Response.WriteAsync(result);
         }

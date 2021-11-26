@@ -39,6 +39,13 @@ namespace Api.Controllers.v1
                 return null;
             }*/
 
+            /*var descriptor = new List<ErrorDescriptor>
+            {
+                new ErrorDescriptor
+                    {ExceptionMessage = "Karon ami jani na", CauseOfError = "Hudai", ExtraNoteForResolve = "Fix"}
+            };
+
+            throw new FluentValidationException(descriptor);*/
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
                 {
