@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Api.Controllers.Common
 {
     [ValidationActionFilter, ApiController, Route("api/v1/[controller]")]
-    public class ApiBaseController : ControllerBase
+    public class ApiBaseControllerV1 : ControllerBase
     {
         // ReSharper disable once UnassignedField.Global
 #pragma warning disable 649

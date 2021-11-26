@@ -27,6 +27,7 @@ namespace Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMiddleware<RequestLoggingMiddleware>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -48,6 +49,7 @@ namespace Api
             app.UseAuthentication();
             app.UseIdentityServer();
             app.UseAuthorization();
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

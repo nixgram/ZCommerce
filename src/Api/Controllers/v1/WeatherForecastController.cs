@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace Api.Controllers.v1
 {
     [AllowAnonymous]
-    public class WeatherForecastController : ApiBaseController
+    public class WeatherForecastController : ApiBaseControllerV1
     {
         private readonly IIdentityService _identityService;
         private readonly ICurrentUserService _currentUserService;

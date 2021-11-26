@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers
 {
     [Authorize]
-    public class RoleController : ApiBaseController
+    public class RoleController : ApiBaseControllerV1
     {
         [HttpPost]
         public async Task<IActionResult> Post(CreateRoleCommand roleCommand)

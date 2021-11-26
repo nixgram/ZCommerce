@@ -1,5 +1,7 @@
 ﻿using Application.Invoices.Commands;
 using Application.Invoices.ViewModels;
+using Application.Product.Commands;
+using Application.Product.ViewModels;
 using Application.ProductCategory.Commands;
 using Application.ProductCategory.ViewModel;
 using AutoMapper;
@@ -20,6 +22,12 @@ namespace Application.Common.Mappings
             CreateMap<CreateProductCategoryCommand, Domain.Entities.ProductCategory>();
             CreateMap<Domain.Entities.ProductCategory, ProductCategoryVm>();
             CreateMap<UpdateProductCategoryCommand, Domain.Entities.ProductCategory>();
+
+
+            CreateMap<Domain.Entities.Product.Product, CreateProductCommand>();
+            CreateMap<CreateProductCommand, Domain.Entities.Product.Product>();
+            CreateMap<CreateProductCommand, ProductVm>();
+            CreateMap<ProductVm, CreateProductCommand>();
         }
     }
 }

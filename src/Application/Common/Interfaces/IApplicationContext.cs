@@ -13,6 +13,6 @@ namespace Application.Common.Interfaces
         DbSet<Domain.Entities.ProductCategory> ProductCategories { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         DbSet<AdditionalInformation> AdditionalInformations { get; set; }
-        DbSet<Product> Products { get; set; }
+        DbSet<Domain.Entities.Product.Product> Products { get; set; }
     }
 }

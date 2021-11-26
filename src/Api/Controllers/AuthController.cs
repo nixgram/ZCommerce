@@ -4,10 +4,9 @@ using Application.Auths.Commands;
 using Application.Auths.Config;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Api.Controllers
 {
-    public class AuthController : ApiBaseController
+    public class AuthController : ApiBaseControllerV1
     {
         [HttpPost("register")]
         public async Task<ActionResult<AuthResult>> Register(UserRegisterCommand userRegisterCommand)
