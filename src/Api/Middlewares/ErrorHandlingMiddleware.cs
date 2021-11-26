@@ -1,7 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
+using Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
@@ -22,33 +21,40 @@ namespace Api.Middlewares
             {
                 await _next(context);
             }
-            catch (Exception ex)
+            catch (FluentValidationException ex)
             {
                 await HandleExceptionAsync(context, ex);
             }
         }
 
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private static Task HandleExceptionAsync(HttpContext context, FluentValidationException exception)
         {
             // Log issues and handle exception response
 
-            if (exception.GetType() == typeof(ValidationException))
+            context.Response.ContentType = "application/json";
+
+            /*if (exception.GetType() == typeof(ValidationException))
             {
                 var code = HttpStatusCode.BadRequest;
-                var result = JsonConvert.SerializeObject(((ValidationException) exception).Message);
-                context.Response.ContentType = "application/json";
+                var result1 = JsonConvert.SerializeObject(((ValidationException) exception).Message);
                 context.Response.StatusCode = (int) code;
-                return context.Response.WriteAsync(result);
-            }
-            else
+                return context.Response.WriteAsync(result1);
+            }*/
+
+            if (exception.GetType() == typeof(FluentValidationException))
             {
-                var code = HttpStatusCode.InternalServerError;
-                var result = JsonConvert.SerializeObject(new {isSuccess = false, error = exception.Message});
-                context.Response.ContentType = "application/json";
+                var code = HttpStatusCode.BadRequest;
+                var descriptors = exception.ErrorDescriptors;
+                var result2 = JsonConvert.SerializeObject(descriptors);
                 context.Response.StatusCode = (int) code;
-                return context.Response.WriteAsync(result);
+                return context.Response.WriteAsync(result2);
             }
+
+
+            var result = JsonConvert.SerializeObject(new {isSuccess = false});
+            context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
+            return context.Response.WriteAsync(result);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Api
         {
             app.UseMiddleware<RequestLoggingMiddleware>();
 
+            // TODO : Not open for production yet.
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

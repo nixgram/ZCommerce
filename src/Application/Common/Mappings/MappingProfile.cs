@@ -6,6 +6,7 @@ using Application.ProductCategory.Commands;
 using Application.ProductCategory.ViewModel;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Entities.Product;
 
 namespace Application.Common.Mappings
 {
@@ -24,10 +25,12 @@ namespace Application.Common.Mappings
             CreateMap<UpdateProductCategoryCommand, Domain.Entities.ProductCategory>();
 
 
-            CreateMap<Domain.Entities.Product.Product, CreateProductCommand>();
+            CreateMap<Domain.Entities.Product.Product, CreateProductCommand>().ReverseMap();
             CreateMap<CreateProductCommand, Domain.Entities.Product.Product>();
-            CreateMap<CreateProductCommand, ProductVm>();
             CreateMap<ProductVm, CreateProductCommand>();
+            CreateMap<Domain.Entities.Product.Product, ProductVm>();
+            CreateMap<AdditionalInformation, AdditionalInformationVm>();
+            CreateMap<AdditionalInformationVm, AdditionalInformation>();
         }
     }
 }

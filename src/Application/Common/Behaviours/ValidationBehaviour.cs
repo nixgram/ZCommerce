@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Exceptions;
+using Domain.Common;
 using FluentValidation;
 using MediatR;
 
@@ -29,7 +31,13 @@ namespace Application.Common.Behaviours
 
             if (failures.Any())
             {
-                throw new ValidationException(failures);
+                IList<ErrorDescriptor> descriptors = failures.Select(validationFailure => new ErrorDescriptor
+                {
+                    ExceptionMessage = validationFailure.PropertyName, CauseOfError = validationFailure.ErrorMessage,
+                    ExtraNoteForResolve = "Please make sure you full fil cause of error"
+                }).ToList();
+
+                throw new FluentValidationException(descriptors);
             }
 
             return next();
