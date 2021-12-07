@@ -26,7 +26,6 @@
 
     <ItemGroup>
       <Folder Include="Auths\ViewModels" />
-      <Folder Include="Product\Queries"/>
     </ItemGroup>
 
 </Project>
