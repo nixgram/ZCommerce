@@ -2,14 +2,14 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Domain.Common;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Application.Auths.Config
 {
     public static class Auth
     {
-        public static string GenerateJwtToken(ApplicationUser user)
+        public static string GenerateJwtToken(ApplicationUser user, string role = "Consumer")
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("urcjzoSvLeXmkhdUNStgLSLuVgSJSiEr");
@@ -20,6 +20,7 @@ namespace Application.Auths.Config
                     new Claim("Id", user.Id),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email),
                     new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                    new Claim(ClaimTypes.Role, role),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),

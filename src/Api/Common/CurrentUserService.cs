@@ -12,5 +12,9 @@ namespace Api.Common
         }
 
         public string UserId { get; }
+        public string RoleName { get; set; }
+        
+        
+         
     }
 }

@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Auths.Commands;
 using Application.Auths.Config;
+using Domain.Common;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Domain.Common;
 
 namespace Application.Auths.Handlers
 {
@@ -29,6 +29,8 @@ namespace Application.Auths.Handlers
             if (!isCorrectPassword)
                 return new AuthResult {Errors = new List<string> {"Email or Password is wrong."}, Success = false};
 
+
+            // TODO : get role or default anonymous will be passed by GenerateJWTToken
             var jwtToken = Auth.GenerateJwtToken(userCredentials);
             return new AuthResult
             {
