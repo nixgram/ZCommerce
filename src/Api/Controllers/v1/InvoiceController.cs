@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.v1
 {
-    [Authorize(Roles = "Consumer")]
+    [Authorize(Roles = "Consumer,Admin")]
     public class InvoiceController : ApiBaseControllerV1
     {
         private readonly ICurrentUserService _currentUserService;

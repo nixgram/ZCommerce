@@ -27,10 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
   

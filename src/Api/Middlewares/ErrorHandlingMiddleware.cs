@@ -50,6 +50,8 @@ namespace Api.Middlewares
                 context.Response.StatusCode = (int) code;
                 return context.Response.WriteAsync(result2);
             }
+            
+            
 
 
             var result = JsonConvert.SerializeObject(new {isSuccess = false, reasonOfFailure = exception.Message});

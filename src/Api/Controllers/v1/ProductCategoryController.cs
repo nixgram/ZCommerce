@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.v1
 {
-    [Authorize]
+    [Authorize(Roles = "Consumer")]
     public class ProductCategoryController : ApiBaseControllerV1
     {
         private readonly ICurrentUserService _currentUserService;

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Authorize]
+   
     public class RoleController : ApiBaseControllerV1
     {
         [HttpPost]

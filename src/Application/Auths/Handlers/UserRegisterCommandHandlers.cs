@@ -12,6 +12,7 @@ namespace Application.Auths.Handlers
     public class UserRegisterCommandHandlers : IRequestHandler<UserRegisterCommand, AuthResult>
     {
         private readonly UserManager<ApplicationUser> _userManager;
+
         // ReSharper disable once NotAccessedField.Local
         private readonly RoleManager<IdentityRole> _roleManager;
 
@@ -24,12 +25,17 @@ namespace Application.Auths.Handlers
 
         public async Task<AuthResult> Handle(UserRegisterCommand request, CancellationToken cancellationToken)
         {
-            var newUser = new ApplicationUser {Email = request.Email, UserName = request.Username,};
-            // var res = await _roleManager.CreateAsync(new IdentityRole(Role.Admin));
+            var newUser = new ApplicationUser {Email = request.Email, UserName = request.Username};
 
+            var allRoles = await _roleManager.GetRoleNameAsync(new IdentityRole(request.RoleName));
+
+            if (string.IsNullOrEmpty(allRoles))
+            {
+                await _roleManager.CreateAsync(new IdentityRole(request.RoleName));
+            }
 
             var newUserCreatedStatus = await _userManager.CreateAsync(newUser, request.Password);
-            // await _userManager.AddToRoleAsync(newUser, Role.Admin);
+            await _userManager.AddToRoleAsync(newUser, request.RoleName);
             if (!newUserCreatedStatus.Succeeded)
                 return new AuthResult
                 {
@@ -38,7 +44,7 @@ namespace Application.Auths.Handlers
                     Token = null
                 };
 
-            var jwtToken = Auth.GenerateJwtToken(newUser);
+            var jwtToken = Auth.GenerateJwtToken(newUser, request.RoleName);
             return new AuthResult
             {
                 Errors = null,

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace InvoiceManagementApp.Infrastructure.Data.Migrations
+namespace Infrastructure.Data.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,10 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                     NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetRoles", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
@@ -38,7 +41,10 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                     LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_AspNetUsers", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "DeviceCodes",
@@ -54,7 +60,43 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                     Expiration = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_DeviceCodes", x => x.UserCode); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceCodes", x => x.UserCode);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invoices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    InvoiceNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    Logo = table.Column<string>(type: "TEXT", nullable: true),
+                    From = table.Column<string>(type: "TEXT", nullable: true),
+                    To = table.Column<string>(type: "TEXT", nullable: true),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    PaymentTerms = table.Column<string>(type: "TEXT", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Discount = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Tax = table.Column<decimal>(type: "TEXT", nullable: false),
+                    AmountPaid = table.Column<decimal>(type: "TEXT", nullable: false),
+                    DiscountType = table.Column<int>(type: "INTEGER", nullable: false),
+                    TaxType = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    Created = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisabledBy = table.Column<string>(type: "TEXT", nullable: true),
+                    DisabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledBy = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invoices", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "PersistedGrants",
@@ -71,7 +113,35 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                     ConsumedTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Data = table.Column<string>(type: "TEXT", maxLength: 50000, nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_PersistedGrants", x => x.Key); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    LogoUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    Created = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisabledBy = table.Column<string>(type: "TEXT", nullable: true),
+                    DisabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledBy = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategories", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
@@ -126,7 +196,7 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new {x.LoginProvider, x.ProviderKey});
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -144,7 +214,7 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new {x.UserId, x.RoleId});
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
@@ -170,7 +240,7 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new {x.UserId, x.LoginProvider, x.Name});
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -178,6 +248,105 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "InvoiceItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    InvoiceId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Item = table.Column<string>(type: "TEXT", nullable: true),
+                    Quantity = table.Column<double>(type: "REAL", nullable: false),
+                    Rate = table.Column<double>(type: "REAL", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    Created = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisabledBy = table.Column<string>(type: "TEXT", nullable: true),
+                    DisabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledBy = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InvoiceItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InvoiceItems_Invoices_InvoiceId",
+                        column: x => x.InvoiceId,
+                        principalTable: "Invoices",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Sku = table.Column<string>(type: "TEXT", nullable: true),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ProductCategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    Created = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisabledBy = table.Column<string>(type: "TEXT", nullable: true),
+                    DisabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledBy = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_ProductCategories_ProductCategoryId",
+                        column: x => x.ProductCategoryId,
+                        principalTable: "ProductCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AdditionalInformations",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Value = table.Column<string>(type: "TEXT", nullable: true),
+                    ProductId = table.Column<long>(type: "INTEGER", nullable: false),
+                    CreatedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "TEXT", nullable: true),
+                    Created = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    LastModified = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDisabled = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DisabledBy = table.Column<string>(type: "TEXT", nullable: true),
+                    DisabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledOn = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    EnabledBy = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdditionalInformations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AdditionalInformations_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdditionalInformations_ProductId",
+                table: "AdditionalInformations",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -228,6 +397,11 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
+                name: "IX_InvoiceItems_InvoiceId",
+                table: "InvoiceItems",
+                column: "InvoiceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_Expiration",
                 table: "PersistedGrants",
                 column: "Expiration");
@@ -235,16 +409,24 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_SubjectId_ClientId_Type",
                 table: "PersistedGrants",
-                columns: new[] {"SubjectId", "ClientId", "Type"});
+                columns: new[] { "SubjectId", "ClientId", "Type" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_SubjectId_SessionId_Type",
                 table: "PersistedGrants",
-                columns: new[] {"SubjectId", "SessionId", "Type"});
+                columns: new[] { "SubjectId", "SessionId", "Type" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Products_ProductCategoryId",
+                table: "Products",
+                column: "ProductCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AdditionalInformations");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -264,13 +446,25 @@ namespace InvoiceManagementApp.Infrastructure.Data.Migrations
                 name: "DeviceCodes");
 
             migrationBuilder.DropTable(
+                name: "InvoiceItems");
+
+            migrationBuilder.DropTable(
                 name: "PersistedGrants");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Invoices");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategories");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Application.Auths.Config
 {
     public static class Auth
     {
-        public static string GenerateJwtToken(ApplicationUser user, string role = "Consumer")
+        public static string GenerateJwtToken(ApplicationUser user, string role)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("urcjzoSvLeXmkhdUNStgLSLuVgSJSiEr");

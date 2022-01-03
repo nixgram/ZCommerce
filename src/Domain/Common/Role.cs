@@ -2,9 +2,9 @@
 {
     public static class Role
     {
-        public const string Admin = "Admin";
-        public const string Customer = "Customer";
-        public const string SuperAdmin = "SuperAdmin";
+        public static string Admin = "Admin";
+        public static string Customer = "Customer";
+        public static string SuperAdmin = "SuperAdmin";
         // public const string User = "User";
     }
 }
